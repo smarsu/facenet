@@ -11,7 +11,7 @@ from datasets import CelebA
 from facenet import FaceNet
 from euclidean import euclidean_distance
 
-np.random.seed(196)
+#np.random.seed(196)
 dataset_root = '/datasets/CelebA'
 
 if __name__ == '__main__':
@@ -30,7 +30,7 @@ if __name__ == '__main__':
         #   4. 0.2740853_5_0.008.npz  test loss: 0
 
         #   1. 0.52165955_1_0.8.npz
-        #facenet.sess.restore(osp.join(facenet.model_root, '0.48139795624446224_0_0.1.npz'))
+        facenet.sess.restore(osp.join(facenet.model_root, '0.33327728476725504_94_1.npz'))
         # Train stage:
         #   1. epoch: 100, lr: 1
         #   2. epoch: 100, lr: 0.1
@@ -41,15 +41,16 @@ if __name__ == '__main__':
         #   6. epoch: 100, lr: 0.001
         #facenet.train(100, celebA.train_datas, 1 * batch_size, celebA.image2identity, testpaths=['data/demo/zjl0.jpg', 'data/demo/zjl1.jpg', 'data/demo/ffy.jpg'])
         #facenet.train(100, celebA.train_datas, 0.1 * batch_size, celebA.image2identity, testpaths=['data/demo/zjl0.jpg', 'data/demo/zjl1.jpg', 'data/demo/ffy.jpg'])
-        facenet.train(100, celebA.train_datas, 1, celebA.image2identity, testpaths=['data/demo/ffy.jpg', 'data/demo/ffy1.jpg', 'data/demo/zjl0.jpg'])
+        facenet.train(100, celebA.train_datas, 1, celebA.image2identity, testpaths=['data/demo/ffy.jpg', 'data/demo/ffy1.jpg', 'data/demo/zjl.jpg'])
         #facenet.train(100, celebA.train_datas, 0.01 * batch_size, celebA.image2identity, testpaths=['data/demo/zjl0.jpg', 'data/demo/zjl1.jpg', 'data/demo/ffy.jpg'])
         #facenet.train(100, celebA.train_datas, 0.001 * batch_size, celebA.image2identity, testpaths=['data/demo/zjl0.jpg', 'data/demo/zjl1.jpg', 'data/demo/ffy.jpg'])
     elif parse == 'test':
         celebA = CelebA(dataset_root, face_size=face_size)
         facenet = FaceNet(face_size=face_size)
-        facenet.sess.restore(osp.join(facenet.model_root, '0.35909512238725516_99_0.01.npz'))
+        # well-done 0.3703060848329446_30_1.npz
+        facenet.sess.restore(osp.join(facenet.model_root, 'nan_99_1.npz'))
 
-        images = ['data/demo/ffy.jpg', 'data/demo/ffy1.jpg', 'data/demo/zjl0.jpg']
+        images = ['data/demo/zjl.jpg', 'data/demo/zjl1.jpg', 'data/demo/ffy.jpg']
         feat0 = facenet.test(images[0])
         feat1 = facenet.test(images[1])
         feat2 = facenet.test(images[2])

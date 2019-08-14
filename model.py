@@ -142,7 +142,7 @@ def facenet_loss(logits, alpha, mask):
     dis = disp - disn
     mask = dis > mask
 
-    # disn = sm.pow(sm.sum(sm.square(anchor - neg), -1), 0.25)
+    disn = sm.pow(sm.sum(sm.square(anchor - neg), -1), 0.25)
 
     return mask * (disp - disn), dis
 
