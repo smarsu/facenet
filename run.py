@@ -50,7 +50,7 @@ if __name__ == '__main__':
         # well-done 0.3703060848329446_30_1.npz
         facenet.sess.restore(osp.join(facenet.model_root, 'nan_99_1.npz'))
 
-        images = ['data/demo/zjl.jpg', 'data/demo/zjl1.jpg', 'data/demo/ffy.jpg']
+        images = ['data/demo/syz.jpg', 'data/demo/syz2.jpg', 'data/demo/zjl.jpg']
         feat0 = facenet.test(images[0])
         feat1 = facenet.test(images[1])
         feat2 = facenet.test(images[2])

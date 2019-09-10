@@ -124,9 +124,8 @@ class FaceNet(object):
         Args:
             data: str or ndarray.
         """
-        print(data)
         data = [self._preprocess(data)] * 3
         feat = self.sess.forward([self.embed], 
                                  feed_dict={self.x: data,
                                  self.mask: np.zeros([1, 1])})
-        return feat[0]
+        return feat[0][0]
